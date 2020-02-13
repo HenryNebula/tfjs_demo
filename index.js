@@ -24,15 +24,15 @@ const demo = async () => {
 
   status('');
 
-  // Make a prediction through the locally hosted cat.jpg.
-  const catElement = document.getElementById('cat');
-  if (catElement.complete && catElement.naturalHeight !== 0) {
-    predict(catElement);
-    catElement.style.display = '';
+  // Make a prediction through the locally hosted image.
+  const imgElement = document.getElementById('uploaded-img');
+  if (imgElement.complete && imgElement.naturalHeight !== 0) {
+    predict(imgElement);
+    imgElement.style.display = '';
   } else {
-    catElement.onload = () => {
-      predict(catElement);
-      catElement.style.display = '';
+    imgElement.onload = () => {
+      predict(imgElement);
+      imgElement.style.display = '';
     }
   }
 
