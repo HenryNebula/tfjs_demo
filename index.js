@@ -6,8 +6,7 @@ CLASSES = {
   4: 'tulips',
 };
 
-const MODEL_PATH =
-    'https://henrynebula.github.io/tfjs_demo/model.json';
+const MODEL_PATH = document.URL + "model.json";
 
 const IMAGE_SIZE = 192;
 const TOPK_PREDICTIONS = 5;
