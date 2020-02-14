@@ -1,15 +1,14 @@
 CLASSES = {
-  0: 'daisy',
-  1: 'dandelion',
-  2: 'roses',
-  3: 'sunflowers',
-  4: 'tulips',
+  0: 'alma_mater',
+  1: 'butler',
+  2: 'lion',
+  3: 'nwc',
 };
 
 const MODEL_PATH = document.URL + "model.json";
 
 const IMAGE_SIZE = 192;
-const TOPK_PREDICTIONS = 5;
+const TOPK_PREDICTIONS = 4;
 
 let my_model;
 const demo = async () => {
