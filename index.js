@@ -1,16 +1,57 @@
+$(document).ready(function(){
+  $('input[type=radio]').click(function(){
+      document.getElementById('ds').innerText = this.value      
+      $( ".pred-container" ).remove();
+      if (this.value == "flower") {
+        CLASSES = ['daisy', 'dandelion', 'roses', 'sunflowers', 'tulips']
+        test_src = "test_daisy.jpg"
+        MODEL_REL_PATH = "flower_model/model.json"
+        TOPK_PREDICTIONS = 5;
+
+      }
+      else {
+        MODEL_REL_PATH = "landmark_model/model.json"
+        test_src = "test_butler.jpeg"
+        TOPK_PREDICTIONS = 4;
+        CLASSES = {
+          0: 'alma_mater',
+          1: 'butler',
+          2: 'lion',
+          3: 'nwc',
+        };
+      }
+      insert_test_img(test_src)
+      MODEL_PATH = document.URL + MODEL_REL_PATH;
+      demo()
+  });
+});
+
+// run landmark dataset by default
 CLASSES = {
   0: 'alma_mater',
   1: 'butler',
   2: 'lion',
   3: 'nwc',
 };
+document.getElementById('ds').innerText = "landmark"
+MODEL_REL_PATH = "landmark_model/model.json"
 
-const MODEL_PATH = document.URL + "model.json";
-
+MODEL_PATH = document.URL + MODEL_REL_PATH;
 const IMAGE_SIZE = 192;
-const TOPK_PREDICTIONS = 4;
+TOPK_PREDICTIONS = 4;
 
 let my_model;
+
+async function insert_test_img(path) {
+  img = document.createElement("img")
+  img.src = path
+  img.width = IMAGE_SIZE
+  img.height = IMAGE_SIZE
+  img.style = "display: none"
+  img.id = "uploaded-img"
+
+  document.getElementById("output").appendChild(img)
+}
 const demo = async () => {
   status('Loading model...');
 

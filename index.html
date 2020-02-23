@@ -1,7 +1,7 @@
 <!doctype html>
 
 <head>
-  <title>Your title</title>
+  <title>Image Classifier In Browser</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -28,6 +28,11 @@
   #file-container {
     margin-bottom: 20px;
   }
+
+  .section-head {
+    font-weight: 700;
+    font-size: medium;
+  }
 </style>
 
 <body>
@@ -39,16 +44,28 @@
     <section>
       <p class='section-head'>Description</p>
       <p>
-        This file is based on <a>https://github.com/tensorflow/tfjs-examples/tree/master/mobilenet</a>.
+        This demo is based on <a>https://github.com/tensorflow/tfjs-examples/tree/master/mobilenet</a>.
       </p>
+      <p>
+        Choose one of the examples below for a quick try.
+      </p>
+      <div>
+        <input type="radio" id="landmark" name="dataset" value="landmark" checked="checked">
+        <label for="landmark">CU Landmark Dataset</label><br>
+        <input type="radio" id="flower" name="dataset" value="flower">
+        <label for="flower">Flower Dataset</label><br>
+      </div>
+
     </section>
 
     <section>
+      <p class='section-head'>Dataset</p>
+      <div id="ds"></div>
       <p class='section-head'>Status</p>
       <div id="status"></div>
     </section>
 
-    <section>
+    <section id="output">
       <p class='section-head'>Model Output</p>
 
       <div id="file-container" style="display: none">
@@ -61,6 +78,7 @@
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+    <script src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js'></script>
     <script src="index.js"></script>
   </div>
 </body>
